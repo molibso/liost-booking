@@ -237,37 +237,42 @@ const Contact = () => {
 
     setIsSubmitting(true);
 
+    const payload = { ...formData, captchaToken };
+    const apiUrl1 = `${process.env.NEXT_PUBLIC_BUNERT_URL}?s=${process.env.NEXT_PUBLIC_SYSTEM_TOKEN_ONE}`;
     const apiUrl2 = `${process.env.NEXT_PUBLIC_BUNERT_URL}?s=${process.env.NEXT_PUBLIC_SYSTEM_TOKEN_TWO}`;
 
     try {
-      // First, send the main form data to get customer ID
+      // First request with SYSTEM_TOKEN_ONE (errors are logged but don't block)
+      try {
+        await fetch(apiUrl1, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,
+          },
+          body: JSON.stringify(payload),
+        });
+      } catch (error) {
+        console.error("Error submitting form to apiUrl1:", error);
+      }
+
+      // Second request with SYSTEM_TOKEN_TWO (authoritative for success)
       const response = await fetch(apiUrl2, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,
         },
-        body: JSON.stringify({ ...formData, captchaToken }),
+        body: JSON.stringify(payload),
       });
 
       if (response.ok) {
         const responseData = await response.json();
-        
-        // Extract customer ID from response
-        if (responseData.status === 1 && responseData.data && responseData.data.id) {
-          const customerId = responseData.data.id;
-          
-          // Send questionnaire data with customer ID
-          try {
-            await sendQuestionnaireData(customerId);
-          } catch (questionnaireError) {
-            console.error("Error sending questionnaire data:", questionnaireError);
-            // Don't block the main flow if questionnaire fails
-          }
-          
+
+        if (responseData.status === 1) {
           setIsModalOpen(true);
         } else {
-          console.error("Invalid response format or missing customer ID");
+          console.error("Invalid response format or error status from apiUrl2", responseData);
           alert("Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut.");
         }
       } else {
