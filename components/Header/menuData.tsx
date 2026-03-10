@@ -15,9 +15,15 @@ const menuData: Menu[] = [
   },
   {
     id: 2.1,
-    title: "SANI-Software Fit Trailer",
+    title: "SANI-Software",
     newTab: false,
     path: "/#dyneos-sani",
+  },
+  {
+    id: 2.15,
+    title: "Fit Trailer",
+    newTab: false,
+    path: "/#fit-trailer",
   },
   {
     id: 2.2,

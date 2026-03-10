@@ -16,7 +16,11 @@ const Hero = () => {
      
           <div className="flex flex-col lg:flex-row lg:items-center lg:gap-8 xl:gap-32.5 mt-6">
             <div className="w-full md:w-1/2">
-               <h2 id="dyneos-sani" className="mb-4.5 mt-6 text-3xl font-medium text-black dark:text-white" style={{fontWeight:'700 '}}>
+               <h2
+                 id="dyneos-sani"
+                 className="mb-4.5 mt-6 text-3xl font-medium text-black dark:text-white scroll-mt-32"
+                 style={{ fontWeight: "700 " }}
+               >
                Die dyneos SANI-Software bietet Ihnen:    {"   "}
           
               </h2>

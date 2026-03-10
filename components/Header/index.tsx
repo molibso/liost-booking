@@ -12,6 +12,7 @@ const Header = () => {
   const [dropdownToggler, setDropdownToggler] = useState(false);
   const [stickyMenu, setStickyMenu] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   const pathUrl = usePathname();
   const router = useRouter();
 
@@ -55,7 +56,7 @@ const Header = () => {
       <div className="relative mx-auto max-w-c-1390 items-center justify-between px-4 md:px-8 xl:flex 2xl:px-0"               
       > 
         <div className="flex w-full items-center justify-between xl:w-1/4">
-          <a href="/">
+          <a href="https://molibso.com/" target="_blank" rel="noreferrer">
             <Image
               src="/images/molibso.png"
               alt="molibso logo"
@@ -157,9 +158,13 @@ const Header = () => {
                       </>
                                     ) : (
                 <Link
-                  href={`${menuItem.path}`}
+                  href={menuItem.path}
+                  onClick={() => setActiveSection(menuItem.path)}
                   className={`hover:text-[#0180ad] ${
-                    pathUrl === menuItem.path ? "text-[#0180ad]" : ""
+                    activeSection === menuItem.path ||
+                    (menuItem.path === "/" && !activeSection && pathUrl === "/")
+                      ? "text-[#0180ad]"
+                      : ""
                   }`}
                 >
                   {menuItem.title}
@@ -180,7 +185,9 @@ const Header = () => {
 
           <div className="mt-1 flex items-center gap-4 xl:mt-0">
             <a
-              href="/"
+              href="https://liostevents.de/"
+              target="_blank"
+              rel="noreferrer"
               aria-label="Liost events banner"
               className="inline-flex items-center"
             >

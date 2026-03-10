@@ -11,7 +11,7 @@ const FitTrailer = () => {
 
   return (
     <>
-      <section className="overflow-hidden   xl:pb-25 xl:">
+      <section className="overflow-hidden scroll-mt-32   xl:pb-25 xl:">
         <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
           <div className="flex flex-col lg:flex-row lg:items-center lg:gap-8 xl:gap-32.5">
           <div className="animate_right w-full md:w-1/2">

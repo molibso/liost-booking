@@ -8,7 +8,10 @@ const Feature = () => {
   return (
     <>
       {/* <!-- ===== Features Start =====-- --> */}
-      <section id="features" className="py-20 lg:py-25 l:py-30" style={{marginTop:"-109px"}}>
+      <section
+        id="features"
+        className="py-20 lg:py-25 l:py-30 scroll-mt-32"
+      >
         <div className="mx-auto max-w-c-1315 px-4 md:px-8 l:px-0">
           {/* <!-- Section Title Start --> */}
           <SectionHeader

@@ -13,8 +13,8 @@ const Footer = () => {
             <ul className="space-y-2 text-gray-600 dark:text-gray-300 text-sm">
               <li><a href="https://liostevents.de/" className="hover:text-primary">Liost-Kongress</a></li>
               <li><a href="https://molibso.com/de/produkt/" className="hover:text-primary">Produkt</a></li>
-              <li><a href="https://molibso.com/de/fachhandel/" className="hover:text-primary">Fachhandel</a></li>
-              <li><a href="https://molibso.com/de/orthopaedietechnik/" className="hover:text-primary">Orthopaedietechnik</a></li>
+              <li><a href="https://molibso.com/de/sport-schuhfachhandel/" className="hover:text-primary">Fachhandel</a></li>
+              <li><a href="https://molibso.com/de/orthopaedieschuhtechnik/" className="hover:text-primary">Orthopaedietechnik</a></li>
               <li><a href="https://molibso.com/de/industrie/" className="hover:text-primary">Industrie</a></li>
              </ul>
           </div>
