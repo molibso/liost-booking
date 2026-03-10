@@ -158,10 +158,10 @@ const Header = () => {
                       </>
                                     ) : (
                 <Link
-                  href={menuItem.path}
-                  onClick={() => setActiveSection(menuItem.path)}
+                  href={menuItem.path || "#"}
+                  onClick={() => setActiveSection(menuItem.path || "#")}
                   className={`hover:text-[#0180ad] ${
-                    activeSection === menuItem.path ||
+                    activeSection === (menuItem.path || "#") ||
                     (menuItem.path === "/" && !activeSection && pathUrl === "/")
                       ? "text-[#0180ad]"
                       : ""
